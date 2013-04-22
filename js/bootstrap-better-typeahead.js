@@ -1,6 +1,6 @@
 /* =============================================================
  * bootstrap-better-typeahead.js v1.0.0 by Philipp Nolte
- *
+ * https://github.com/ptnplanet/Bootstrap-Better-Typeahead
  * =============================================================
  * This plugin makes use of twitter bootstrap typeahead
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
