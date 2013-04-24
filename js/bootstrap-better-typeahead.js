@@ -43,7 +43,7 @@
 
             items = $.grep(items, function (item) {
                 return that.matcher(item);
-            })
+            });
 
             items = this.sorter(items);
 
@@ -117,7 +117,10 @@
 
         , focus: function(e) {
             this.focused = true;
-            this.lookup(e);
+
+            if (!this.mousedover) {
+                this.lookup(e);
+            }
         }
     };
 
