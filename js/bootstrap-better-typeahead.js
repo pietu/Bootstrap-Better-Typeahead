@@ -38,6 +38,22 @@
             return items ? this.process(items) : this;
         }
 
+        , listen: function () {
+            this.$element
+                .on('blur',     $.proxy(this.blur, this))
+                .on('keypress', $.proxy(this.keypress, this))
+                .on('keyup',    $.proxy(this.keyup, this))
+                .on('click',    $.proxy(this.click, this))
+
+            if (this.eventSupported('keydown')) {
+                this.$element.on('keydown', $.proxy(this.keydown, this))
+            }
+
+            this.$menu
+                .on('click', $.proxy(this.click, this))
+                .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+        }
+
         , process: function (items) {
             var that = this;
 
@@ -122,6 +138,17 @@
                 this.lookup(e);
             }
         }
+
+        , click: function (e) {
+            e.stopPropagation()
+            e.preventDefault()
+            if (e.currentTarget == this.$element[0]) {
+                if (this.options.lookupOnClick) this.lookup(e)
+            } else {
+                this.select()
+            }
+        }
+
     };
 
     $.extend($.fn.typeahead.Constructor.prototype, BetterTypeahead);
